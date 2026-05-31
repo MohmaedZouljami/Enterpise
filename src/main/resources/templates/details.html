@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details Evenement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        nav {
+            background-color: #2255aa;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .inhoud {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .rij {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #2255aa;
+        }
+        a.knop {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #2255aa;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: gray;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATIE -->
+<nav>
+    <a href="/">NGO Anderlecht</a>
+    <a href="/new">Nieuw evenement</a>
+    <a href="/about">About</a>
+</nav>
+
+<!-- INHOUD -->
+<div class="inhoud">
+    <h1>Details Evenement</h1>
+
+    <div class="rij">
+        <p class="label">Titel</p>
+        <p th:text="${event.titel}"></p>
+    </div>
+
+    <div class="rij">
+        <p class="label">Omschrijving</p>
+        <p th:text="${event.omschrijving}"></p>
+    </div>
+
+    <div class="rij">
+        <p class="label">Organisatie</p>
+        <p th:text="${event.organisatie}"></p>
+    </div>
+
+    <div class="rij">
+        <p class="label">Mail contactpersoon</p>
+        <p th:text="${event.mailContactpersoon}"></p>
+    </div>
+
+    <div class="rij">
+        <p class="label">Tijdstip</p>
+        <p th:text="${event.tijdstip}"></p>
+    </div>
+
+    <div class="rij">
+        <p class="label">Locatie</p>
+        <p th:text="${event.locatie.naam}"></p>
+        <p th:text="${event.locatie.adres}"></p>
+        <p th:text="${event.locatie.capaciteit}"></p>
+    </div>
+
+    <a class="knop" href="/">Terug naar overzicht</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 NGO Anderlecht
+</footer>
+
+</body>
+</html>
