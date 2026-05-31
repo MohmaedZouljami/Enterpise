@@ -62,6 +62,14 @@ public class EventController {
         return "contact";
     }
 
+    @PostMapping("/contact")
+    public String verstuurContact(@RequestParam String naam,
+                                  @RequestParam String email,
+                                  @RequestParam String bericht) {
+        // later mailtrap toevoegen
+        return "redirect:/";
+    }
+
     private List<Location> getLocaties() {
         List<Location> locaties = new ArrayList<>();
         locaties.add(new Location(1L, "Campus Kaai", "Kaaiplein 1, Brussel", 200));
