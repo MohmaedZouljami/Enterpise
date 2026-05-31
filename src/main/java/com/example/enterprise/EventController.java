@@ -29,7 +29,10 @@ public class EventController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("events", events);
+        List<Event> laatste10 = events.stream()
+                .skip(Math.max(0, events.size() - 10))
+                .toList();
+        model.addAttribute("events", laatste10);
         return "index";
     }
 
@@ -41,7 +44,26 @@ public class EventController {
     }
 
     @PostMapping("/new")
-    public String saveEvent(@ModelAttribute Event event) {
+    public String saveEvent(@ModelAttribute Event event, Model model) {
+        // Validatie: controleer of alle velden ingevuld zijn
+        if (event.getTitel() == null || event.getTitel().isEmpty() ||
+                event.getOmschrijving() == null || event.getOmschrijving().isEmpty() ||
+                event.getOrganisatie() == null || event.getOrganisatie().isEmpty() ||
+                event.getMailContactpersoon() == null || event.getMailContactpersoon().isEmpty() ||
+                event.getTijdstip() == null) {
+
+            model.addAttribute("fout", "Alle velden zijn verplicht!");
+            model.addAttribute("locaties", getLocaties());
+            return "new";
+        }
+
+        // Validatie: controleer of e-mailadres geldig is
+        if (!event.getMailContactpersoon().matches("^[^@]+@[^@]+\\.[^@]+$")) {
+            model.addAttribute("fout", "Ongeldig e-mailadres!");
+            model.addAttribute("locaties", getLocaties());
+            return "new";
+        }
+
         event.setId(nextId++);
         events.add(event);
         return "redirect:/";

@@ -49,6 +49,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .fout {
+            background-color: #ffdddd;
+            color: red;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -70,22 +77,25 @@
 <div class="inhoud">
     <h1>Nieuw Evenement</h1>
 
+    <!-- FOUTMELDING -->
+    <div class="fout" th:if="${fout}" th:text="${fout}"></div>
+
     <form th:action="@{/new}" th:object="${event}" method="post">
 
         <label>Titel</label>
-        <input type="text" th:field="*{titel}" required/>
+        <input type="text" th:field="*{titel}"/>
 
         <label>Omschrijving</label>
-        <textarea th:field="*{omschrijving}" rows="4" required></textarea>
+        <textarea th:field="*{omschrijving}" rows="4"></textarea>
 
         <label>Organisatie</label>
-        <input type="text" th:field="*{organisatie}" required/>
+        <input type="text" th:field="*{organisatie}"/>
 
         <label>Mail contactpersoon</label>
-        <input type="email" th:field="*{mailContactpersoon}" required/>
+        <input type="email" th:field="*{mailContactpersoon}"/>
 
         <label>Tijdstip</label>
-        <input type="datetime-local" th:field="*{tijdstip}" required/>
+        <input type="datetime-local" th:field="*{tijdstip}"/>
 
         <button type="submit">Opslaan</button>
     </form>
