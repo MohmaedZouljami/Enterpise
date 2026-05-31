@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        nav {
+            background-color: #2255aa;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .inhoud {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #2255aa;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: gray;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATIE -->
+<nav>
+    <a href="/">NGO Anderlecht</a>
+    <a href="/new">Nieuw evenement</a>
+    <a href="/about">About</a>
+</nav>
+
+<!-- INHOUD -->
+<div class="inhoud">
+    <h1>Contact</h1>
+
+    <form th:action="@{/contact}" method="post">
+
+        <label>Naam</label>
+        <input type="text" name="naam" required/>
+
+        <label>Email</label>
+        <input type="email" name="email" required/>
+
+        <label>Bericht</label>
+        <textarea name="bericht" rows="5" required></textarea>
+
+        <button type="submit">Verstuur</button>
+    </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 NGO Anderlecht
+</footer>
+
+</body>
+</html>
