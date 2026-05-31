@@ -1,5 +1,7 @@
 package com.example.enterprise;
 
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,13 @@ import java.util.List;
 @Controller
 public class EventController {
 
+    private final JavaMailSender mailSender;
     private List<Event> events = new ArrayList<>();
     private Long nextId = 1L;
 
-    public EventController() {
+    public EventController(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+
         Location locatie1 = new Location(1L, "Campus Kaai", "Kaaiplein 1, Brussel", 200);
         Location locatie2 = new Location(2L, "Gemeenschapshuis", "Anderlechtsesteenweg 5", 100);
 
@@ -66,7 +71,14 @@ public class EventController {
     public String verstuurContact(@RequestParam String naam,
                                   @RequestParam String email,
                                   @RequestParam String bericht) {
-        // later mailtrap toevoegen
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("noreply@ngoanderlecht.be");
+        message.setTo("admin@ngoanderlecht.be");
+        message.setSubject("Nieuw bericht van " + naam);
+        message.setText("Van: " + naam + "\nEmail: " + email + "\n\nBericht:\n" + bericht);
+
+        mailSender.send(message);
+
         return "redirect:/";
     }
 
