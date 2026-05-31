@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NGO Anderlecht</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        nav {
+            background-color: #2255aa;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .inhoud {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #2255aa;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        a.knop {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #2255aa;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: gray;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATIE -->
+<nav>
+    <a href="/">NGO Anderlecht</a>
+    <a href="/new">Nieuw evenement</a>
+    <a href="/about">About</a>
+</nav>
+
+<!-- INHOUD -->
+<div class="inhoud">
+    <h1>Evenementen</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Titel</th>
+            <th>Organisatie</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.titel}"></td>
+            <td th:text="${event.organisatie}"></td>
+            <td>
+                <a th:href="@{/details/{id}(id=${event.id})}">Bekijk</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="knop" href="/new">+ Nieuw evenement</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 NGO Anderlecht
+</footer>
+
+</body>
+</html>
