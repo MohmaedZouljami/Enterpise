@@ -97,6 +97,14 @@
         <label>Tijdstip</label>
         <input type="datetime-local" th:field="*{tijdstip}"/>
 
+        <label>Locatie</label>
+        <select name="locatie.id">
+            <option th:each="locatie : ${locaties}"
+                    th:value="${locatie.id}"
+                    th:text="${locatie.naam}">
+            </option>
+        </select>
+
         <button type="submit">Opslaan</button>
     </form>
 </div>
