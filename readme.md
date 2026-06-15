@@ -52,3 +52,11 @@ en ook voor mijn leerstof te beheren om die project te kunnen doen.
 1. Start het project op via de terminal: ./mvnw spring-boot:run
 2. Open je browser en ga naar:
 3. http://localhost:8080
+
+
+## foto's
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
