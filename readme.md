@@ -36,6 +36,7 @@ De app beheert evenementen en laat bezoekers contact opnemen via e-mail.
 
 ## AI-chats
 Ik heb ai gebruikt om te weten hoe we de mailtrap.io gebruiken.
+en ook voor mijn leerstof te beheren om die project te kunnen doen.
 
 ## Manual - Project uitvoeren
 
